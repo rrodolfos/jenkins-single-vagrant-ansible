@@ -1,0 +1,12 @@
+- name: common
+  apt:
+    pkg:
+    - vim
+    - htop
+    - mc
+    - screen
+    - aptitude
+    - python3-apt
+    state: present
+    update_cache: yes
+

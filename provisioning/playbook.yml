@@ -1,0 +1,11 @@
+---
+- hosts: all
+  become: true
+  roles:
+  - common
+
+- hosts: jenkins
+  become: true
+  roles:
+  - jenkins
+

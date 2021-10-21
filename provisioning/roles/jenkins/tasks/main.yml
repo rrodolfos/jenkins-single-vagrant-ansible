@@ -1,0 +1,66 @@
+- name: Installing openjdk-11-jdk
+  apt:
+    pkg:
+    - openjdk-11-jdk
+    state: present
+    update_cache: yes
+
+- name: Installing git
+  apt:
+    pkg:
+    - git
+    state: present
+    update_cache: yes
+
+- name: Adding jenkins gpg
+  apt_key:
+    url: https://pkg.jenkins.io/debian-stable/jenkins.io.key
+    state: present
+
+- name: Adding jenkins repository
+  apt_repository:
+    repo: deb https://pkg.jenkins.io/debian-stable binary/
+    state: present
+    filename: jenkins.io
+
+- name: Copying jenkins to /etc/default
+  copy:
+    src: etc_default/jenkins
+    dest: /etc/default
+
+- name: Creating JENKINS_HOME folder /var/lib/jenkins
+  file:
+    path: /var/lib/jenkins
+    state: directory
+    mode: '0755'
+
+- name: Copying init.groovy.d to JENKINS_HOME
+  copy:
+    src: init.groovy.d
+    dest: /var/lib/jenkins
+
+- name: Copying JCasC jenkins.yaml to JENKINS_HOME
+  template:
+    src: jenkins_home/jenkins.yaml.j2
+    dest: /var/lib/jenkins/jenkins.yaml
+
+- name: Installing jenkins
+  apt:
+    pkg:
+    - jenkins
+    state: present
+    update_cache: yes
+
+- name: Waiting for Jenkins start to remove JCasC jenkins.yaml from JENKINS_HOME
+  uri:
+    url: "http://{{ ansible_facts['eth1']['ipv4']['address'] }}:8080"
+    follow_redirects: none
+    method: GET
+    status_code: 403
+  register: _result
+  until: _result.status == 403
+  retries: 20
+  delay: 5
+  changed_when: _result.status == 403
+  notify:
+    - Removing JCasC jenkins.yaml from JENKINS_HOME

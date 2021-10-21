@@ -1,0 +1,4 @@
+- name: Removing JCasC jenkins.yaml from JENKINS_HOME
+  file:
+    path: /var/lib/jenkins/jenkins.yaml
+    state: absent
