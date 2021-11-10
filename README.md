@@ -1,5 +1,5 @@
 # Configuring jenkins with ansible and Jenkins configuration as code on vagrant
-This repository contains vagrant and ansible configuration to deploy and provision a single jenkins server with jenkins configurationas code (a.k.a. JCasC) services:
+This repository contains vagrant and ansible configuration to deploy and provision a single jenkins server with jenkins configuration as code (a.k.a. JCasC):
 
   - [Jenkins](https://www.jenkins.io/)
   - [Jenkins Configuration as Code (a.k.a. JCasC) Plugin](https://www.jenkins.io/projects/jcasc/)
@@ -8,13 +8,13 @@ This repository contains vagrant and ansible configuration to deploy and provisi
 > This implementation is intended for testing / PoC / playing purposes only, this solution is not scalable or secure enough for live / production environments. Use it at your own risk. Have fun!.
 
 # Requirements
-The below requirements are needed deploy and provision each cluster.
+The below requirements are needed to deploy and provision Jenkins VM.
 
   - [VirtualBox](https://www.virtualbox.org/)
   - [Vagrant](https://www.vagrantup.com/)
   - [Ansible](https://www.ansible.com/)
 
-# what did I use for this
+# what did I use for this?
   - MacBook Pro 2015 CPU Core i5 8GB RAM
   - OS GNU Linux/Debian 12 Bookworm 64bits
   - VirtualBox 6.1.16
@@ -44,11 +44,21 @@ This VM deploy a single Jenkins server as follow (ansible):
   - Install Jenkins dependencies
   - Copy Jenkins default configuration
   - Create Jenkins home
-  - Create init.groove.d and copy configuration file ([Groovy Hook Scripts](https://www.jenkins.io/doc/book/managing/groovy-hook-scripts/)) for modules instalation (JCasC among them) in jenkins home
-  - copy jenkins.yml for JCasC and "automagically" configuration
+  - Create init.groove.d directory with the configuration file ([Groovy Hook Scripts](https://www.jenkins.io/doc/book/managing/groovy-hook-scripts/)) for modules instalation (JCasC among them) into jenkins home
+  - copy jenkins.yml for JCasC and "automagically" configuration into jenkins home
   - Install Jenkins
   - Remove jenkins.yml
   - Have fun!
+
+##### Clone this repository:
+```
+  $ git clone https://github.com/rrodolfos/jenkins-single-vagrant-ansible.git
+```
+
+##### Chande to the repository directory:
+```
+  $ cd jenkins-single-vagrant-ansible
+```
 
 ##### Create vagrant VM and deploy jenkins:
 To start up the VM
