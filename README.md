@@ -45,7 +45,7 @@ This VM deploy a single Jenkins server as follow (by ansible):
   - Copy Jenkins default configuration
   - Create Jenkins home
   - Create init.groove.d directory with the configuration file ([Groovy Hook Scripts](https://www.jenkins.io/doc/book/managing/groovy-hook-scripts/)) for modules instalation (JCasC among them) into jenkins home
-  - copy jenkins.yml for JCasC and "automagically" configuration into jenkins home
+  - Copy jenkins.yml for JCasC and "automagically" configuration into jenkins home
   - Install Jenkins
   - Remove jenkins.yml
   - Have fun!
