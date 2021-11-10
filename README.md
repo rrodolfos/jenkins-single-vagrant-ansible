@@ -55,7 +55,7 @@ This VM deploy a single Jenkins server as follow (by ansible):
   $ git clone https://github.com/rrodolfos/jenkins-single-vagrant-ansible.git
 ```
 
-##### Chande to the repository directory:
+##### Change to the cloned repository directory:
 ```
   $ cd jenkins-single-vagrant-ansible
 ```
