@@ -40,7 +40,7 @@ VM machine definition as follow:
 # How to build it
 
 ### Jenkins
-This VM deploy a single Jenkins server as follow (ansible):
+This VM deploy a single Jenkins server as follow (by ansible):
   - Install Jenkins dependencies
   - Copy Jenkins default configuration
   - Create Jenkins home
